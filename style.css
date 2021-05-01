@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+}
+
+body{
+    background-color: rgba(236, 236, 236, 0.993);
+    display: flex;
+    flex-direction: column;
+}
+
+header, main{
+    margin: auto;
+    font-family: Roboto;
+}
+
+.new-session-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    height: 50vh;
+    width: auto;
+    font-family: Roboto;
+}
+
+header{
+    font-family: Knewave;
+    font-size: 60px;
+    color: rgb(255, 115, 0);
+    margin-top: 50px;
+}
+
+.category{
+    display: flex;
+    /* grid-template-columns: 30vw 30vw;
+    row-gap: 30px; */
+    max-width: 500px;
+    flex-flow: wrap;
+    margin: auto;
+}
+
+.category-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
+    max-width: 200px; 
+    margin: auto;
+    margin-top: 10px;
+    transition: all .2s ease-in-out;
+    font-size: 18px;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+}
+
+.category-radio{
+    display: none;
+}
+
+i{
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+#autocomplete, #join-session-code{
+    margin: auto;
+    width: 70vw;
+    height: 35px;
+    border: none;
+    border-radius: 50px;
+    padding-inline: 20px;
+    padding: 10px;
+    padding-left: 25px;
+    font-size: 20px;
+    margin-top: 50px;
+    max-width: 700px;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+}
+
+.category-radio:checked + .category-label{
+    background-color: rgb(255, 115, 0);
+    border: solid white -5px;
+    color: white;
+
+}
+
+.distance{
+    margin: auto;
+    background-color:  rgb(255, 255, 255);
+    /* width: 60%;  */
+    min-width: 300px;
+    margin-block: 40px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    border-radius: 50px;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+}
+
+.distance-radio{
+    display: none;
+}
+
+.distance-label{
+    padding: 10px;
+    margin: auto;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    overflow: hidden;
+    max-height: 30px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.distance-label:last-child{
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.distance-label:first-of-type{
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.distance-label:not(:last-child){
+    border-right: solid 1px  rgb(216, 97, 0);
+    
+}
+
+.distance-radio:checked + .distance-label {
+    background-color: rgb(255, 115, 0);
+}
+
+#new-session-submit, #join-session-submit, .refresh-button{
+    width: 200px;
+    margin: auto;
+    margin-top: 40px;
+    border-style: none;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50px;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    cursor: pointer;
+    background-color: rgb(255, 115, 0);
+    color: white;
+}
+
+.join-session-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.results{
+    display: none;
+}
+
+.card{
+    margin-top: 50px;
+    background-color: white;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    border-radius: 10px;
+    width: 400px;
+    min-height: 500px;
+}
+
+img{
+    margin:auto;
+    border-radius: 10px;
+    object-fit: cover;
+    width: 400px;
+    min-height: 300px;
+    max-height: 300px;
+}
+
+.sort{
+    width: 125px;
+    height: 125px;
+    margin: auto;
+    margin-top: 40px;
+    border-style: none;
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 100px;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    cursor: pointer;
+    background-color: rgb(255, 115, 0);
+    color: white;
+    font-size: 40px;
+}
+
+h1{
+    margin: 10px
+}
+
+p{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.buttons{
+    display: flex;
+}
+
+#yes{
+    background-color: teal;
+}
+
+#no{
+    background-color: rgb(255, 64, 64);
+}
+
+.refresh{
+    display: flex;
+}
