@@ -9,7 +9,12 @@ const server = http.createServer(app);
 const io = socket(server);
 
 //Set static folder
+if(process.env.NODE_ENV === 'production'){
 app.use(express.static('public'));
+}
+app.get('*',(req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 //var declaration
 let size = io.engine.clientsCount;
