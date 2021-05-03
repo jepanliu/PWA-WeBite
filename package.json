@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.0.1"
+  },
+  "name": "webite",
+  "version": "1.0.0",
+  "description": "restaurant selection gamified",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jepanliu/PWA-WeBite.git"
+  },
+  "author": "Jenny Pan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jepanliu/PWA-WeBite/issues"
+  },
+  "homepage": "https://github.com/jepanliu/PWA-WeBite#readme"
+}

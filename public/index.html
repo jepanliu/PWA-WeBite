@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <title>WeBite</title>
+</head>
+<body>
+    <header>
+        <div class="logo">WeBite</div>
+    </header>
+    <main>
+        <div class="results">
+            <div class="refresh">
+                <h1 class="session-code-h1">Session Code: <span class="session-code"></span></h1> <br>
+                <button class="refresh-button">New Search</button>
+            </div>
+            <div class="card">
+                <div class="info"></div>
+            </div>
+            <div class="buttons">
+                <button class="sort" id="yes"><i class="fas fa-check"></i></button>
+                <button class="sort" id="no"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="intro">
+            <div class="join-session">
+                <form action="" class="join-session-form">
+                    <input id="join-session-code" autocomplete="off">
+                    <input type="submit" value="Join Session" id="join-session-submit">
+                </form>
+            </div>
+            <div class="new-session">
+                <form  class="new-session-form" method="GET">
+                    <!-- Autocomplete text fiel -->
+                    <input type="text" id="autocomplete">
+                    <div class="distance">
+                        <input type="radio" id="distance-1" class="distance-radio" name="distanceRadio" value="8046" checked>
+                        <label class="distance-label" for="distance-1">5 mi</label>
+                        <input type="radio" id="distance-2" class="distance-radio" name="distanceRadio" value="16093">
+                        <label class="distance-label" for="distance-2">10 mi</label>
+                        <input type="radio" id="distance-3" class="distance-radio" name="distanceRadio" value="24140">
+                        <label class="distance-label" for="distance-3">15 mi</label>
+                        <input type="radio" id="distance-4" class="distance-radio" name="distanceRadio" value="32186">
+                        <label class="distance-label" for="distance-4">20 mi</label>
+                    </div>
+                    <!-- Categories for Places API search -->
+                    <div class="category">
+                        <input type="radio" id="category-1" class="category-radio" name="categoryRadio" value="pizza" checked>
+                        <label class="category-label" for="category-1"><i class="fas fa-pizza-slice"></i> <br> Pizza</label>
+
+                        <input type="radio" id="category-2" class="category-radio" name="categoryRadio" value="Burger">
+                        <label class="category-label" for="category-2"><i class="fas fa-hamburger"></i> <br>Burger</label>
+
+                        <input type="radio" id="category-3" class="category-radio" name="categoryRadio" value="Italian">
+                        <label class="category-label" for="category-3"><i class="fas fa-utensils"></i> <br>Italian</label>
+
+                        <input type="radio" id="category-4" class="category-radio" name="categoryRadio" value="Chinese">
+                        <label class="category-label" for="category-4"><i class="fas fa-drumstick-bite"></i> <br>Chinese</label>
+
+                        <input type="radio" id="category-5" class="category-radio" name="categoryRadio" value="Japanese">
+                        <label class="category-label" for="category-5"><i class="fas fa-fish"></i> <br>Japanese</label>
+
+                        <input type="radio" id="category-6" class="category-radio" name="categoryRadio" value="Bobba">
+                        <label class="category-label" for="category-6"><i class="fas fa-mug-hot"></i> <br>Bobba</label>
+
+                        <input type="radio" id="category-7" class="category-radio" name="categoryRadio" value="Steak">
+                        <label class="category-label" for="category-7"><i class="fas fa-bacon"></i></i> <br>Steak</label>
+
+                        <input type="radio" id="category-8" class="category-radio" name="categoryRadio" value="Mediterranean">
+                        <label class="category-label" for="category-8"><i class="fas fa-seedling"></i> <br>Mediterranean</label>
+
+                        <input type="radio" id="category-9" class="category-radio" name="categoryRadio" value="Mexican">
+                        <label class="category-label" for="category-9"><i class="fas fa-pepper-hot"></i> <br>Mexican</label>
+                    </div>
+                    <input type="button" value="Create Session" id="new-session-submit">
+                </form>
+            </div>
+        </div>
+        
+    </main>
+    <script src="./app.js"></script>
+    <script language="javascript" async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkMadtQzgN_d25EwZ7oncbUzTEo9U59vA&libraries=places&callback=initialise">
+    </script>
+
+</body>
+</html>
