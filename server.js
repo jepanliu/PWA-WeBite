@@ -12,9 +12,7 @@ const io = socket(server);
 if(process.env.NODE_ENV === 'production'){
 app.use(express.static('public'));
 }
-app.get('*',(req, res) => {
-    res.sendFile('public');
-});
+
 
 //var declaration
 let size = io.engine.clientsCount;
