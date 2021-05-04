@@ -59,6 +59,7 @@ header{
     transition: all .2s ease-in-out;
     font-size: 18px;
     box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 .category-radio{
@@ -83,6 +84,7 @@ i{
     /* margin-top: 50px; */
     max-width: 700px;
     box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 .category-radio:checked + .category-label{
@@ -119,6 +121,7 @@ i{
     max-height: 30px;
     transition: all .2s ease-in-out;
     cursor: pointer;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 .distance-label:last-child{
@@ -153,6 +156,7 @@ i{
     cursor: pointer;
     background-color: rgb(255, 115, 0);
     color: white;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 .join-session-form{
