@@ -3,8 +3,6 @@
 const socket = io('http://localhost:3000')
 socket.on('connection');
 
-//winner
-const infoWinner = document.querySelector('.infoWinner');
 //Create new session button
 const createSession = document.querySelector('#new-session-submit');
 //Join session button
@@ -33,7 +31,8 @@ let photosOut;
 let winOut;
 
 //winner
-const winnerCard = document.querySelector('.cardWinner')
+const winnerCard = document.querySelector('.winner');
+const infoWinner = document.querySelector('.infoWinner');
 
 refresh.addEventListener('click', () =>{
     window.location.reload();})
@@ -197,17 +196,21 @@ function winner(result) {
     winnerCard.style.display = 'block';
     resultsPage.style.display = 'none';
     winnerCard.innerHTML = 
-    `<h1>${result.name}</h1>
-    <a href="${result.url}">${result.formatted_address}</a>
+    `<img src ="${result.photos[3].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300})}"
+    <br> <h1>${result.name}</h1>
+    <p><i class="i-small" class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
+    <p><i class="i-small" class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
+    <p><i class="i-small" class="fas fa-map-marker-alt"></i> <a href="${result.url}">${result.formatted_address}</a></p>
     `
     }
     
 }
 
 function searchDetail(){
+    service = new google.maps.places.PlacesService(document.createElement('div'));
+
     var request = {placeId: winOut};
     service.getDetails(request, (res) =>{
-        console.log(res);
         winner(res);
     })
    
