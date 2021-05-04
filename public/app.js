@@ -4,9 +4,9 @@ const socket = io('http://localhost:3000')
 socket.on('connection');
 
 //category selection
-const category = document.querySelector('input[name="categoryRadio"]:checked').value;
+// const category = document.querySelector('input[name="categoryRadio"]:checked').value;
 //distance selection
-const distance = document.querySelector('input[name="distanceRadio"]:checked').value;
+// const distance = document.querySelector('input[name="distanceRadio"]:checked').value;
 //Create new session button
 const createSession = document.querySelector('#new-session-submit');
 //Join session button
@@ -122,9 +122,9 @@ function initialise() {
                     service = new google.maps.places.PlacesService(document.createElement('div'));
                     request = {
                         location: new google.maps.LatLng(lat, lng),
-                        radius: distance,
+                        radius: document.querySelector('input[name="distanceRadio"]:checked').value,
                         types: ['restaurant'], 
-                        keyword: [`${category}`]
+                        keyword: [`${document.querySelector('input[name="categoryRadio"]:checked').value}`]
                     };
                     
                     searchResults();
