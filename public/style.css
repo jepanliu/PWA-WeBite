@@ -13,6 +13,11 @@ header, main{
     font-family: Roboto;
 }
 
+main{
+    margin-bottom: 50px;
+        height: 100%;
+}
+
 .new-session-form{
     display: flex;
     flex-direction: column;
@@ -24,9 +29,9 @@ header, main{
 
 header{
     font-family: Knewave;
-    font-size: 60px;
+    font-size: 50px;
     color: rgb(255, 115, 0);
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .category{
@@ -75,7 +80,7 @@ i{
     padding: 10px;
     padding-left: 25px;
     font-size: 20px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     max-width: 700px;
     box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
 }
@@ -138,7 +143,7 @@ i{
 #new-session-submit, #join-session-submit, .refresh-button{
     width: 200px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 30px;
     border-style: none;
     background-color: white;
     padding: 10px;
@@ -153,6 +158,7 @@ i{
 .join-session-form{
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 .results{
@@ -160,21 +166,24 @@ i{
 }
 
 .card{
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: white;
     box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
     border-radius: 10px;
-    width: 400px;
-    min-height: 500px;
+    width: 90vw;
+    min-width: 60vw;
+    height: 350px;
+    min-height: 250px;
 }
 
 img{
     margin:auto;
     border-radius: 10px;
     object-fit: cover;
-    width: 400px;
-    min-height: 300px;
-    max-height: 300px;
+    width: 90vw;
+    min-width: 60vw;
+    min-height: 100px;
+    max-height: 170px;
 }
 
 .sort{
@@ -222,6 +231,7 @@ p{
 
 .session-code-h1{
     margin:auto;
+    font-size: 20px;
 }
 
 .cardWinner{
@@ -233,3 +243,5 @@ p{
     width: 400px;
     min-height: 500px;
 }
+
+.refresh-button{}

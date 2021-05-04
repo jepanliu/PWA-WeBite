@@ -35,13 +35,13 @@ io.on('connection', socket => {
     
     socket.on('selections', (msg) =>{
         selection1 = msg;
-
+        console.log(selectionWinner(selection2, selection1))
         console.log(selection1);
     })
 
     socket.on('selections2', (msg) =>{
         selection2 = msg;
-        selectionWinner();
+        selectionWinner(selection2, selection1);
         console.log(selection2);
     })
     
