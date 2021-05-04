@@ -20,9 +20,6 @@ const sessionoutput = document.querySelector('.session-code-h1')
 const resultsPage = document.querySelector('.results');
 const intro = document.querySelector('.intro');
 
-//winner
-const winner = document.querySelector('.infoWinner')
-
 //information display block
 const restaurantName = document.querySelector('.info')
 var i = 0;
@@ -37,6 +34,9 @@ let photos = [];
 let photosOut;
 let currentPlayer = 'host';
 let playerNum = 0;
+
+//winner
+const winnerCard = document.querySelector('.cardWinner')
 
 refresh.addEventListener('click', () =>{
     window.location.reload();})
@@ -194,7 +194,7 @@ function searchResults() {
 }
 
 function winner() {
-    
+    winnerCard.style.display = 'block';
 }
 
 function joinSessionCode() {

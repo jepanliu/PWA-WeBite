@@ -223,3 +223,13 @@ p{
 .session-code-h1{
     margin:auto;
 }
+
+.cardWinner{
+    display: none;
+    margin-top: 50px;
+    background-color: white;
+    box-shadow: rgb(209, 209, 209) 2px 5px 10px 1px;
+    border-radius: 10px;
+    width: 400px;
+    min-height: 500px;
+}

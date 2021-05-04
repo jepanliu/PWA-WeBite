@@ -32,7 +32,6 @@ io.on('connection', socket => {
 
     socket.on('photos', (data) =>{
         photosOut = data;
-        
     });
     
     socket.on('selections', (msg) =>{
