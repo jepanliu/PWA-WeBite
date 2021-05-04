@@ -250,12 +250,14 @@ p{
     width: 90vw;
     max-width: 500px;
     min-width: 200px;
-    height: 400px;
+    height: 550px;
     min-height: 250px;
 }
 
-.i-small{
+.i-small > i{
     font-size: 20px;
+    margin-right: 10px;
+    color: rgb(255, 115, 0);
 }
 
 button, label{
@@ -264,4 +266,17 @@ button, label{
 
 button:hover, label:hover{
     transform: scale(1.05);
+}
+
+h2{
+    margin-inline: 20px;
+    font-size: 25px;
+}
+
+.winner > button{
+    margin-left: 20px;
+}
+
+a {
+    color: black;
 }

@@ -1,6 +1,6 @@
 //Connect socket.io
-const socket = io('https://webite-pwa.herokuapp.com/');
-// const socket = io('http://localhost:3000')
+// const socket = io('https://webite-pwa.herokuapp.com/');
+const socket = io('http://localhost:3000')
 socket.on('connection');
 
 //Create new session button
@@ -22,6 +22,7 @@ var i = 0;
 const yes = document.getElementById('yes');
 const no = document.getElementById('no');
 const refresh = document.querySelector('.refresh-button');
+
 var yesSelections = []; 
 var yesSelections2 = []; 
 var request;
@@ -198,10 +199,11 @@ function winner(result) {
     winnerCard.innerHTML = 
     `<img src ="${result.photos[3].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300})}"
     <br> <h1>${result.name}</h1>
-    <p><i class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
-    <p><i class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
-    <p><i class="fas fa-map-marker-alt"></i> <a href="${result.url}">${result.formatted_address}</a></p>
-    <h1>Let's eat here!</h2>
+    <p class="i-small"><i class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
+    <p class="i-small"><i class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
+    <p class="i-small"><i class="fas fa-map-marker-alt"></i><a href="${result.url}">${result.formatted_address}</a></p>
+    <h2>Let's eat here!</h2>
+    <button class="refresh-button">New Search</button>
     `
     }
     
