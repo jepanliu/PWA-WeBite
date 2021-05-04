@@ -242,6 +242,7 @@ p{
 }
 
 .winner{
+    position: relative;
     display: none;
     margin-top: 50px;
     background-color: white;
@@ -274,7 +275,10 @@ h2{
 }
 
 .winner > button{
+    margin-bottom: 20px;
     margin-left: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
 a {

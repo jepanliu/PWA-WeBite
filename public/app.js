@@ -1,6 +1,6 @@
 //Connect socket.io
-const socket = io('https://webite-pwa.herokuapp.com/');
-// const socket = io('http://localhost:3000')
+// const socket = io('https://webite-pwa.herokuapp.com/');
+const socket = io('http://localhost:3000')
 socket.on('connection');
 
 //Create new session button
@@ -203,7 +203,7 @@ function winner(result) {
     <p class="i-small"><i class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
     <p class="i-small"><i class="fas fa-map-marker-alt"></i><a href="${result.url}">${result.formatted_address}</a></p>
     <h2>Let's eat here!</h2>
-    <button class="refresh-button">New Search</button>
+    <button class="refresh-button" onClick="window.location.reload();">New Search</button>
     `
     }
     
