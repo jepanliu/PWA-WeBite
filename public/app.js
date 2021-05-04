@@ -201,6 +201,7 @@ function winner(result) {
     <p><i class="i-small" class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
     <p><i class="i-small" class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
     <p><i class="i-small" class="fas fa-map-marker-alt"></i> <a href="${result.url}">${result.formatted_address}</a></p>
+    <h2>Let's eat here!</h2>
     `
     }
     
