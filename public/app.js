@@ -1,6 +1,6 @@
 //Connect socket.io
-// const socket = io('https://webite-pwa.herokuapp.com/');
-const socket = io('http://localhost:3000')
+const socket = io('https://webite-pwa.herokuapp.com/');
+// const socket = io('http://localhost:3000')
 socket.on('connection');
 
 //category selection
@@ -195,6 +195,8 @@ function searchResults() {
 
 function winner() {
     winnerCard.style.display = 'block';
+
+    // if(i => )
 }
 
 function joinSessionCode() {

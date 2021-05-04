@@ -21,6 +21,7 @@ let resultsOut;
 let photosOut;
 let selection1;
 let selection2;
+let winner;
 //Start Socket.io
 io.on('connection', socket => {
     socket.on('joinSession', joinSession);
@@ -36,20 +37,27 @@ io.on('connection', socket => {
     
     socket.on('selections', (msg) =>{
         selection1 = msg;
-        console.log(selection1);
         selectionWinner();
+        console.log(selection1);
     })
 
     socket.on('selections2', (msg) =>{
         selection2 = msg;
-        console.log(selection2);
         selectionWinner();
+        console.log(selection2);
     })
     
     function selectionWinner() {
-        if(selection1 === selection2){
-            console.log(`lets go to ${selection1}`);
-        }
+        for(let i = 0; i < selection2 || i < selection1; i++){
+            if(selection2 && selection1){
+                if(selection1[i] === selection2[i]){
+                    console.log(selection2)
+                }
+           }
+           else{
+               console.log('oop');
+           }
+        }   
     }
 
    function joinSession(joinCode) { 
