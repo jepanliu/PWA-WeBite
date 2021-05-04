@@ -9,9 +9,7 @@ const server = http.createServer(app);
 const io = socket(server);
 
 //Set static folder
-//if(process.env.NODE_ENV === 'production'){
 app.use(express.static('public'));
-//}
 
 
 //var declaration
@@ -37,7 +35,7 @@ io.on('connection', socket => {
     
     socket.on('selections', (msg) =>{
         selection1 = msg;
-        selectionWinner();
+
         console.log(selection1);
     })
 
@@ -47,17 +45,8 @@ io.on('connection', socket => {
         console.log(selection2);
     })
     
-    function selectionWinner() {
-        for(let i = 0; i < selection2 || i < selection1; i++){
-            if(selection2 && selection1){
-                if(selection1[i] === selection2[i]){
-                    console.log(selection2)
-                }
-           }
-           else{
-               console.log('oop');
-           }
-        }   
+    function selectionWinner(a, b) {
+        return a.filter(Set.prototype.has, new Set(b));
     }
 
    function joinSession(joinCode) { 
@@ -73,8 +62,6 @@ io.on('connection', socket => {
         socket.join(sessionCode);
         console.log(socket.rooms);
    }
-
-//    io.in(roomName).emit("event", "hi");
 });
 
 //Listen to port 3000
