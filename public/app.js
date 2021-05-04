@@ -19,7 +19,7 @@ const sessionoutput = document.querySelector('.session-code-h1')
 //page section selector
 const resultsPage = document.querySelector('.results');
 const intro = document.querySelector('.intro');
-
+const card = document.querySelector('.card');
 //information display block
 const restaurantName = document.querySelector('.info')
 var i = 0;
@@ -89,6 +89,7 @@ function initialise() {
                     <p>rating: ${array[i].rating}</p>
                     <p>address: ${array[i].vicinity}</p>`;
                     
+                    card.classList.toggle('.swipe-right');
                 })
                 //when no button is clicked
                 no.addEventListener('click', (msg) => {
