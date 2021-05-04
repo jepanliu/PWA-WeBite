@@ -198,10 +198,10 @@ function winner(result) {
     winnerCard.innerHTML = 
     `<img src ="${result.photos[3].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300})}"
     <br> <h1>${result.name}</h1>
-    <p><i class="i-small" class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
-    <p><i class="i-small" class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
-    <p><i class="i-small" class="fas fa-map-marker-alt"></i> <a href="${result.url}">${result.formatted_address}</a></p>
-    <h2>Let's eat here!</h2>
+    <p><i class="fas fa-link"></i> <a href="${result.website}">${result.website}</a></p>
+    <p><i class="fas fa-phone"></i> <a href="tel:${result.international_phone_number}">${result.formatted_phone_number}</a></p>
+    <p><i class="fas fa-map-marker-alt"></i> <a href="${result.url}">${result.formatted_address}</a></p>
+    <h1>Let's eat here!</h2>
     `
     }
     
