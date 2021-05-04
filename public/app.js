@@ -1,5 +1,6 @@
 //Connect socket.io
-const socket = io('https://webite-pwa.herokuapp.com/');
+// const socket = io('https://webite-pwa.herokuapp.com/');
+const socket = io('http://localhost:3000')
 socket.on('connection');
 
 //category selection
@@ -14,30 +15,33 @@ const joinSessionForm = document.querySelector('.join-session-form');
 const joinCodeInput = document.querySelector('#join-session-code');
 const sessionCodeOutput = document.querySelector('.session-code');
 const sessionCode = makeid(5);
+const sessionoutput = document.querySelector('.session-code-h1')
 //page section selector
 const resultsPage = document.querySelector('.results');
 const intro = document.querySelector('.intro');
 
+//winner
+const winner = document.querySelector('.infoWinner')
+
 //information display block
 const restaurantName = document.querySelector('.info')
-var i = 1;
+var i = 0;
 const yes = document.getElementById('yes');
 const no = document.getElementById('no');
 const refresh = document.querySelector('.refresh-button');
 var yesSelections = []; 
+var yesSelections2 = []; 
 var request;
 var service;
-let searchResultsArray = [];
-
+let photos = [];
+let photosOut;
 let currentPlayer = 'host';
 let playerNum = 0;
 
 refresh.addEventListener('click', () =>{
     window.location.reload();})
 
-socket.on('event', (data) =>{
-    console.log('data');
-})
+    
 
 //Initialize Google Places API
 function initialise() {
@@ -55,14 +59,47 @@ function initialise() {
         joinSessionForm.addEventListener('submit', function(e){
             e.preventDefault();
             joinSessionCode();
+            sessionoutput.style.display = 'none';
+            socket.on('photos', (data)=>{
+                photosOut = data;
+            })
+            console.log(photosOut);
+
             socket.on('msg', (msg)=>{
                 console.log(msg);
+                let array = msg;
+                
+                //display restaurant information
+                restaurantName.innerHTML = 
+                `
+                <br> <h1>${array[i].name}</h1>
+                <p>rating: ${array[i].rating}</p>
+                <p>address: ${array[i].vicinity}</p>`;
+
+                yes.addEventListener('click', (a) => {  
+                    i++
+                    //add place ID to yesSelections array
+                    yesSelections2.push(`${array[i].place_id}`);
+                   socket.emit('selections2', yesSelections2)
+                    //display restaurant information
+                    restaurantName.innerHTML = `
+                    <br> <h1>${array[i].name}</h1>
+                    <p>rating: ${array[i].rating}</p>
+                    <p>address: ${array[i].vicinity}</p>`;
+                    
+                })
+                //when no button is clicked
+                no.addEventListener('click', (msg) => {
+                    i++
+                restaurantName.innerHTML = 
+                `
+                <br> <h1>${array[i].name}</h1>
+                <p>rating: ${array[i].rating}</p>
+                <p>address: ${array[i].vicinity}</p>`;
+                })
             })
-            socket.on('req', function(request){
-                searchResults(request);
-            })
-            
-        })
+        })  
+       
     }
 
     //Search for input address
@@ -87,8 +124,8 @@ function initialise() {
                         types: ['restaurant'], 
                         keyword: [`${category}`]
                     };
-                    socket.emit('req', request);
-                    searchResults(request);
+                    
+                    searchResults();
                     
             })
         }
@@ -116,17 +153,24 @@ function newSession() {
     socket.emit('newSession', sessionCode);
 }
 
-function searchResults(request) {
+function searchResults() {
                         
     service.search(request, function(results){
         output();
+        for(let j= 0; j < results.length; j++){
+            photos.push(results[j].photos[0].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300}));
+            console.log(photos);
+        }
         console.log(results);
-    
+        socket.emit('results', results);
+        // console.log(restaurantName.innerHTML);
         //when yes button is clicked
         yes.addEventListener('click', () => {  
                 i++
                 //add place ID to yesSelections array
                 yesSelections.push(`${results[i].place_id}`);
+                socket.emit('selections', yesSelections)
+
                 //display restaurant information
                 output();
         })
@@ -147,6 +191,10 @@ function searchResults(request) {
             <p>address: ${results[i].vicinity}</p>`;
         }
     })
+}
+
+function winner() {
+    
 }
 
 function joinSessionCode() {
