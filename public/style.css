@@ -62,7 +62,7 @@ header{
 }
 
 .category-radio{
-    display: block;
+    display: none;
 }
 
 i{
