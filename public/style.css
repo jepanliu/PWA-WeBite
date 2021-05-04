@@ -249,3 +249,11 @@ p{
     width: 400px;
     min-height: 500px;
 }
+
+button, label{
+    transition: all .2s ease-in-out;
+}
+
+button:hover, label:hover{
+    transform: scale(1.05);
+}

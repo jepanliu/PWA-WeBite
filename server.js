@@ -19,8 +19,9 @@ let resultsOut;
 let photosOut;
 let selection1;
 let selection2;
+let total = [];
+let intersection = [];
 let winner;
-let intersection;
 //Start Socket.io
 io.on('connection', socket => {
     socket.on('joinSession', joinSession);
@@ -36,17 +37,32 @@ io.on('connection', socket => {
     
     socket.on('selections', (msg) =>{
         selection1 = msg;
-        console.log(selection1);
+        selectionWinner();
     })
 
     socket.on('selections2', (msg) =>{
         selection2 = msg;
-        console.log(selection2);
+        selectionWinner();
     })
     
-    function selectionWinner(a, b) {
-        intersection = a.filter(element => b.includes(element));
-        socket.emit('winner', winner);
+    function selectionWinner() {
+        if(selection1){
+            if(selection1.length >= 0){
+            total.push(selection1);
+        }}
+        if(selection2){
+            if(selection2.length >= 0){
+                total.push(selection2);
+            }
+        }
+
+        if(total.length >= 2){
+            intersection = selection2.filter(x => selection1.includes(x));
+            if(intersection.length===1){
+            console.log(intersection);
+            io.emit('winner', intersection);
+            }
+        }
     }
 
    function joinSession(joinCode) { 

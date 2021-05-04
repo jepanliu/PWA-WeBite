@@ -3,10 +3,8 @@
 const socket = io('http://localhost:3000')
 socket.on('connection');
 
-//category selection
-// const category = document.querySelector('input[name="categoryRadio"]:checked').value;
-//distance selection
-// const distance = document.querySelector('input[name="distanceRadio"]:checked').value;
+//winner
+const infoWinner = document.querySelector('.infoWinner');
 //Create new session button
 const createSession = document.querySelector('#new-session-submit');
 //Join session button
@@ -19,7 +17,7 @@ const sessionoutput = document.querySelector('.session-code-h1')
 //page section selector
 const resultsPage = document.querySelector('.results');
 const intro = document.querySelector('.intro');
-const card = document.querySelector('.card');
+
 //information display block
 const restaurantName = document.querySelector('.info')
 var i = 0;
@@ -32,8 +30,7 @@ var request;
 var service;
 let photos = [];
 let photosOut;
-let currentPlayer = 'host';
-let playerNum = 0;
+let winOut;
 
 //winner
 const winnerCard = document.querySelector('.cardWinner')
@@ -41,7 +38,12 @@ const winnerCard = document.querySelector('.cardWinner')
 refresh.addEventListener('click', () =>{
     window.location.reload();})
 
-    
+socket.on('winner', (win) =>{
+    console.log(win);
+    winOut = win;
+    // let winDetail = `https://maps.googleapis.com/maps/api/place/details/?key=AIzaSyBkMadtQzgN_d25EwZ7oncbUzTEo9U59vA&place_id=${winOut}`;
+    searchDetail();
+})
 
 //Initialize Google Places API
 function initialise() {
@@ -62,13 +64,9 @@ function initialise() {
             sessionoutput.style.display = 'none';
             socket.on('photosout', (data)=>{
                 photosOut = data;
-                console.log(photosOut);
-
             })
             
-
             socket.on('msg', (msg)=>{
-                console.log(msg);
                 let array = msg;
                 
                 //display restaurant information
@@ -89,7 +87,6 @@ function initialise() {
                     <p>rating: ${array[i].rating}</p>
                     <p>address: ${array[i].vicinity}</p>`;
                     
-                    card.classList.toggle('.swipe-right');
                 })
                 //when no button is clicked
                 no.addEventListener('click', (msg) => {
@@ -163,11 +160,9 @@ function searchResults() {
         for(let j= 0; j < results.length; j++){
             photos.push(results[j].photos[0].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300}));
         }
-        console.log(photos);
         socket.emit('photos', photos);
-        console.log(results);
         socket.emit('results', results);
-        // console.log(restaurantName.innerHTML);
+        
         //when yes button is clicked
         yes.addEventListener('click', () => {  
                 i++
@@ -197,10 +192,25 @@ function searchResults() {
     })
 }
 
-function winner() {
+function winner(result) {
+    if(winOut.length > 0){
     winnerCard.style.display = 'block';
+    resultsPage.style.display = 'none';
+    winnerCard.innerHTML = 
+    `<h1>${result.name}</h1>
+    <a href="${result.url}">${result.formatted_address}</a>
+    `
+    }
+    
+}
 
-    // if(i => )
+function searchDetail(){
+    var request = {placeId: winOut};
+    service.getDetails(request, (res) =>{
+        console.log(res);
+        winner(res);
+    })
+   
 }
 
 function joinSessionCode() {
