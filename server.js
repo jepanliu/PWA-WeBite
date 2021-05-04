@@ -52,8 +52,8 @@ io.on('connection', socket => {
    function joinSession(joinCode) { 
        console.log(socket.rooms);
        socket.join(joinCode);
+       socket.emit('photosout', photosOut);
        socket.emit('msg', resultsOut);
-       socket.emit('photos', photosOut);
        console.log(socket.rooms); 
     }
 

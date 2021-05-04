@@ -60,10 +60,12 @@ function initialise() {
             e.preventDefault();
             joinSessionCode();
             sessionoutput.style.display = 'none';
-            socket.on('photos', (data)=>{
+            socket.on('photosout', (data)=>{
                 photosOut = data;
+                console.log(photosOut);
+
             })
-            console.log(photosOut);
+            
 
             socket.on('msg', (msg)=>{
                 console.log(msg);
@@ -71,7 +73,7 @@ function initialise() {
                 
                 //display restaurant information
                 restaurantName.innerHTML = 
-                `
+                `<img src="${photosOut[i]}"
                 <br> <h1>${array[i].name}</h1>
                 <p>rating: ${array[i].rating}</p>
                 <p>address: ${array[i].vicinity}</p>`;
@@ -82,7 +84,7 @@ function initialise() {
                     yesSelections2.push(`${array[i].place_id}`);
                    socket.emit('selections2', yesSelections2)
                     //display restaurant information
-                    restaurantName.innerHTML = `
+                    restaurantName.innerHTML = `<img src="${photosOut[i]}"
                     <br> <h1>${array[i].name}</h1>
                     <p>rating: ${array[i].rating}</p>
                     <p>address: ${array[i].vicinity}</p>`;
@@ -92,7 +94,7 @@ function initialise() {
                 no.addEventListener('click', (msg) => {
                     i++
                 restaurantName.innerHTML = 
-                `
+                `<img src="${photosOut[i]}"
                 <br> <h1>${array[i].name}</h1>
                 <p>rating: ${array[i].rating}</p>
                 <p>address: ${array[i].vicinity}</p>`;
@@ -159,8 +161,9 @@ function searchResults() {
         output();
         for(let j= 0; j < results.length; j++){
             photos.push(results[j].photos[0].getUrl({maxWidth: 400, maxHeight: 400, minWidth: 400, minHeight: 300}));
-            console.log(photos);
         }
+        console.log(photos);
+        socket.emit('photos', photos);
         console.log(results);
         socket.emit('results', results);
         // console.log(restaurantName.innerHTML);
