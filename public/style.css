@@ -67,7 +67,7 @@ header{
 
 i{
     font-size: 40px;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 }
 
 #autocomplete, #join-session-code{
