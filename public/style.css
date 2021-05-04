@@ -62,7 +62,7 @@ header{
 }
 
 .category-radio{
-    display: none;
+    display: block;
 }
 
 i{
@@ -243,5 +243,3 @@ p{
     width: 400px;
     min-height: 500px;
 }
-
-.refresh-button{}

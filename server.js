@@ -20,6 +20,7 @@ let photosOut;
 let selection1;
 let selection2;
 let winner;
+let intersection;
 //Start Socket.io
 io.on('connection', socket => {
     socket.on('joinSession', joinSession);
@@ -35,32 +36,28 @@ io.on('connection', socket => {
     
     socket.on('selections', (msg) =>{
         selection1 = msg;
-        console.log(selectionWinner(selection2, selection1))
         console.log(selection1);
     })
 
     socket.on('selections2', (msg) =>{
         selection2 = msg;
-        selectionWinner(selection2, selection1);
         console.log(selection2);
     })
     
     function selectionWinner(a, b) {
-        return a.filter(Set.prototype.has, new Set(b));
+        intersection = a.filter(element => b.includes(element));
+        socket.emit('winner', winner);
     }
 
    function joinSession(joinCode) { 
-       console.log(socket.rooms);
        socket.join(joinCode);
        socket.emit('photosout', photosOut);
        socket.emit('msg', resultsOut);
-       console.log(socket.rooms); 
     }
 
    function newSession(sessionCode){
         roomName=sessionCode;
         socket.join(sessionCode);
-        console.log(socket.rooms);
    }
 });
 
